@@ -1,0 +1,58 @@
+Warning: Not using public transport line 'L1_west' for routing persons. It has less than two usable stops.
+Warning: Teleporting vehicle 'veh1807'; waited too long (yield), lane='F4_B4_1', time=2714.00.
+Warning: Vehicle 'veh1807' ends teleporting on edge 'B4_tunis_marine', time=2714.00.
+Warning: Person 'ped733' is jammed on edge ':B4_w1', time=2716.00.
+Warning: Teleporting vehicle 'bus_L2_south_9'; waited too long (yield), lane='mv_n_B4_1', time=2718.00.
+Warning: Vehicle 'bus_L2_south_9' ends teleporting on edge 'B4_F4', time=2718.00.
+Warning: Teleporting vehicle 'veh2199'; waited too long (yield), lane='F4_B4_2', time=2725.00.
+Warning: Vehicle 'veh2199' ends teleporting on edge 'B4_mv_n', time=2725.00.
+Warning: Person 'ped739' is jammed on edge ':B4_w0', time=2726.00.
+Warning: Teleporting vehicle 'veh2365'; waited too long (yield), lane='B3_B4_2', time=2731.00.
+Warning: Vehicle 'veh2365' ends teleporting on edge 'B4_mv_n', time=2731.00.
+Warning: Person 'ped660' is jammed on edge ':B4_w2', time=2733.00.
+Warning: Teleporting vehicle 'veh2412'; waited too long (yield), lane='tunis_marine_B4_1', time=2736.00.
+Warning: Vehicle 'veh2412' ends teleporting on edge 'B4_B3', time=2736.00.
+Warning: Teleporting vehicle 'veh2097'; waited too long (yield), lane='B3_B4_1', time=2739.00.
+Warning: Vehicle 'veh2097' ends teleporting on edge 'B4_F4', time=2739.00.
+Warning: Person 'ped653' is jammed on edge ':B4_w2', time=2753.00.
+Warning: Teleporting vehicle 'veh2426'; waited too long (yield), lane='tunis_marine_B4_1', time=2755.00.
+Warning: Vehicle 'veh2426' ends teleporting on edge 'B4_B3', time=2755.00.
+Warning: Person 'ped558' is jammed on edge ':B4_w0', time=2805.00.
+Warning: Person 'ped645' is jammed on edge ':B4_w3', time=2814.00.
+Warning: Person 'ped650' is jammed on edge ':B4_w3', time=2837.00.
+Warning: Person 'ped770' is jammed on edge ':B4_w1', time=2839.00.
+Warning: Person 'ped772' is jammed on edge ':B4_w0', time=2847.00.
+Warning: Person 'ped553' is jammed on edge ':B4_w3', time=2873.00.
+Warning: Person 'ped648' is jammed on edge ':B4_w3', time=2894.00.
+Warning: Person 'ped782' is jammed on edge ':B4_w1', time=2897.00.
+Warning: Teleporting vehicle 'veh2556'; waited too long (yield), lane='mv_n_B4_1', time=2899.00.
+Warning: Vehicle 'veh2556' ends teleporting on edge 'B4_F4', time=2899.00.
+Warning: Person 'ped685' is jammed on edge ':B4_w0', time=2913.00.
+Warning: Person 'ped683' is jammed on edge ':B4_w2', time=2914.00.
+Warning: Person 'ped473' is jammed on edge ':B4_w2', time=2976.00.
+Warning: Person 'ped532' is jammed on edge ':B4_w0', time=3015.00.
+Warning: Teleporting vehicle 'veh2367'; waited too long (yield), lane='F4_B4_1', time=3020.00.
+Warning: Vehicle 'veh2367' ends teleporting on edge 'B4_mv_n', time=3020.00.
+Warning: Teleporting vehicle 'veh2583'; waited too long (yield), lane='mv_n_B4_1', time=3024.00.
+Warning: Vehicle 'veh2583' ends teleporting on edge 'B4_F4', time=3024.00.
+Warning: Teleporting vehicle 'veh2118'; waited too long (yield), lane='F4_B4_1', time=3030.00.
+Warning: Vehicle 'veh2118' ends teleporting on edge 'B4_mv_n', time=3030.00.
+Warning: Person 'ped820' is jammed on edge ':B4_w2', time=3032.00.
+Warning: Teleporting vehicle 'veh1178'; waited too long (yield), lane='B3_B4_2', time=3036.00.
+Warning: Vehicle 'veh1178' ends teleporting on edge 'B4_mv_n', time=3036.00.
+Warning: Teleporting vehicle 'veh2457'; waited too long (yield), lane='tunis_marine_B4_1', time=3042.00.
+Warning: Vehicle 'veh2457' ends teleporting on edge 'B4_B3', time=3042.00.
+Warning: Person 'ped739' is jammed on edge ':B4_w3', time=3043.00.
+Warning: Teleporting vehicle 'veh2387'; waited too long (yield), lane='B3_B4_1', time=3044.00.
+Warning: Vehicle 'veh2387' ends teleporting on edge 'B4_tunis_marine', time=3044.00.
+Warning: Person 'ped738' is jammed on edge ':B4_w2', time=3050.00.
+Warning: Teleporting vehicle 'veh2460'; waited too long (yield), lane='tunis_marine_B4_2', time=3059.00.
+Warning: Vehicle 'veh2460' ends teleporting on edge 'B4_F4', time=3059.00.
+Warning: Person 'ped676' is jammed on edge ':B4_w3', time=3102.00.
+Warning: Teleporting vehicle 'veh2251'; waited too long (wrong lane), lane='B3_B4_2', time=3104.00.
+Warning: Vehicle 'veh2251' ends teleporting on edge 'B4_F4', time=3104.00.
+Warning: Teleporting vehicle 'veh2295'; waited too long (yield), lane='F3_B3_1', time=3186.00.
+Warning: Vehicle 'veh2295' ends teleporting on edge 'B3_B4', time=3221.00.
+Warning: Person 'ped952' is jammed on edge ':B3_c2', time=3225.00.
+Warning: Person 'ped730' is jammed on edge ':B2_c0', time=3466.00.
+Warning: Person 'ped947' is jammed on edge ':B2_c0', time=3466.00.

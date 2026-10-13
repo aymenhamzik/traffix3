@@ -1,0 +1,12 @@
+{
+ "scenario": "tr_ramadan",
+ "seed": 1,
+ "start": "2025-03-12 16:53",
+ "duration": 1800,
+ "events": {
+  "ambulances": {
+   "count": 3
+  }
+ },
+ "vehicles": 2246
+}

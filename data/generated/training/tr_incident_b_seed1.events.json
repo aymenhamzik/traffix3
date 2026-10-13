@@ -1,0 +1,15 @@
+{
+ "scenario": "tr_incident_b",
+ "seed": 1,
+ "start": "2025-09-16 08:00",
+ "duration": 1800,
+ "events": {
+  "incident": {
+   "edge": "F1_F3",
+   "lane": 2,
+   "at": 400,
+   "duration": 900
+  }
+ },
+ "vehicles": 2250
+}

@@ -1,0 +1,19 @@
+{
+ "scenario": "tr_rain_incident",
+ "seed": 1,
+ "start": "2025-12-09 17:00",
+ "duration": 1800,
+ "events": {
+  "rain": {
+   "at": 200,
+   "intensity": 0.7
+  },
+  "incident": {
+   "edge": "B4_B3",
+   "lane": 1,
+   "at": 500,
+   "duration": 800
+  }
+ },
+ "vehicles": 1930
+}

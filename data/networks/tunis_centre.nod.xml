@@ -1,0 +1,19 @@
+<nodes>
+  <node id="B1" x="0" y="0" type="traffic_light"><param key="name" value="Rue de Rome x Av. de France / Bourguiba"/></node>
+  <node id="B2" x="300" y="0" type="traffic_light"><param key="name" value="Theatre municipal pedestrian crossing"/></node>
+  <node id="B3" x="550" y="0" type="traffic_light"><param key="name" value="Av. de Paris / Av. de Carthage x Bourguiba"/></node>
+  <node id="B4" x="950" y="0" type="traffic_light"><param key="name" value="Place du 14 Janvier 2011 (Av. Mohamed V)"/></node>
+  <node id="F1" x="0" y="-400" type="traffic_light"><param key="name" value="Rue de Rome x Av. Farhat Hached"/></node>
+  <node id="F3" x="550" y="-400" type="traffic_light"><param key="name" value="Av. de Carthage x Av. Farhat Hached"/></node>
+  <node id="F4" x="950" y="-400" type="traffic_light"><param key="name" value="Av. Mohamed V (south) x Av. Farhat Hached"/></node>
+  <node id="bab_bhar" x="-300" y="0" type="priority"><param key="name" value="Bab Bhar"/></node>
+  <node id="tunis_marine" x="1350" y="0" type="priority"><param key="name" value="Tunis Marine"/></node>
+  <node id="rome_n" x="0" y="300" type="priority"><param key="name" value="Rue de Rome (north)"/></node>
+  <node id="paris_n" x="550" y="300" type="priority"><param key="name" value="Av. de Paris (north)"/></node>
+  <node id="mv_n" x="950" y="300" type="priority"><param key="name" value="Av. Mohamed V (north)"/></node>
+  <node id="fh_w" x="-300" y="-400" type="priority"><param key="name" value="Av. Farhat Hached (west)"/></node>
+  <node id="fh_e" x="1350" y="-400" type="priority"><param key="name" value="Av. Farhat Hached (east)"/></node>
+  <node id="rome_s" x="0" y="-700" type="priority"><param key="name" value="Rue de Rome (south)"/></node>
+  <node id="carthage_s" x="550" y="-700" type="priority"><param key="name" value="Av. de Carthage (south)"/></node>
+  <node id="mv_s" x="950" y="-700" type="priority"><param key="name" value="Av. Mohamed V (south)"/></node>
+</nodes>

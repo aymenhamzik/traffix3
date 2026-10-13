@@ -1,0 +1,36 @@
+# Simulation and experiment settings
+network: tunis_centre            # or tunis_osm after scripts/import_osm.py
+bus_stop_dwell: 20               # s a bus waits at each stop
+bus_lanes: []                    # roads whose right lane is bus-only, e.g. [B1_B2, B2_B3, B3_B4, B4_B3, B3_B2, B2_B1]
+                                 # (changes the network: rerun scripts/build_network.py, setup and experiments)
+step_length: 1                   # seconds per simulation step
+supermaster_every: 5             # seconds between supermaster decisions
+max_extra_time: 1800             # stop this long after demand ends; vehicles left = unfinished
+seeds: [1, 2, 3]
+workers: 2                       # parallel simulations (8 GB RAM: keep 2)
+
+controllers:
+  - fixed            # SUMO fixed-time plans
+  - actuated         # SUMO actuated plans
+  - junction_only    # masters + junction agents, no supermaster
+  - traffix_rules    # full hierarchy, rule-based fallbacks only (no trained models)
+  - traffix          # full hierarchy with trained models (max-pressure traffic lights)
+  - traffix_predictive  # same, predictive (MPC) traffic light agent
+  - traffix_rl       # same, reinforcement learning traffic light agent
+
+demand:
+  base_vehicles_per_hour: 4000   # network inflow when all calendar factors = 1.0 (~300 vehicles at once at peak)
+  through_share: 0.4             # trips crossing the centre without stopping
+  motorcycle_share: 0.10
+  pedestrians_per_hour: 1200
+  slow_walker_share: 0.15
+  slow_walker_speed: 0.95        # m/s (range 0.8-1.07)
+  normal_walker_speed: 1.3
+  bus_headway: 240               # s
+  bus_delay_sd: 110              # s, random departure delay
+  ambulances_per_hour: 6
+
+location:                        # for sunset (Ramadan iftar)
+  latitude: 36.80
+  longitude: 10.18
+  utc_offset: 1

@@ -1,0 +1,3 @@
+Warning: Not using public transport line 'L2_south' for routing persons. It has less than two usable stops.
+Warning: Not using public transport line 'L1_east' for routing persons. It has less than two usable stops.
+Warning: Vehicle 'veh1322' performs emergency braking on lane 'F4_B4_2' with decel=9.00, wished=4.50, severity=1.00, time=1768.00.

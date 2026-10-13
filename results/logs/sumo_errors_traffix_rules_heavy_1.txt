@@ -1,0 +1,6 @@
+Warning: Not using public transport line 'L2_south' for routing persons. It has less than two usable stops.
+Warning: Person 'ped1177' is jammed on edge ':F1_c2', time=3327.00.
+Warning: Teleporting vehicle 'veh3168'; waited too long (yield), lane=':F1_6_0', time=3436.00.
+Warning: Vehicle 'veh3168' ends teleporting on edge 'F1_rome_s', time=3436.00.
+Warning: Teleporting vehicle 'veh2866'; waited too long (jam), lane=':F1_11_1', time=3438.00.
+Warning: Vehicle 'veh2866' ends teleporting on edge 'F1_F3', time=3438.00.

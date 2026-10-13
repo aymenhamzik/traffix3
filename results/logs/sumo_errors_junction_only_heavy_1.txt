@@ -1,0 +1,25 @@
+Warning: Not using public transport line 'L2_south' for routing persons. It has less than two usable stops.
+Warning: Person 'ped650' is jammed on edge ':F1_c1', time=2168.00.
+Warning: Teleporting vehicle 'veh1884'; waited too long (jam), lane=':F1_11_1', time=2250.00.
+Warning: Vehicle 'veh1884' ends teleporting on edge 'F1_F3', time=2250.00.
+Warning: Person 'ped1008' is jammed on edge ':F1_w2', time=3301.00.
+Warning: Teleporting vehicle 'veh2511'; waited too long (yield), lane=':F1_21_0', time=3308.00.
+Warning: Vehicle 'veh2511' ends teleporting on edge 'F1_B1', time=3308.00.
+Warning: Teleporting vehicle 'veh2631'; waited too long (yield), lane=':F1_3_0', time=3309.00.
+Warning: Teleporting vehicle 'veh3313'; waited too long (yield), lane=':F1_6_0', time=3309.00.
+Warning: Vehicle 'veh2631' ends teleporting on edge 'F1_B1', time=3309.00.
+Warning: Vehicle 'veh3313' ends teleporting on edge 'F1_rome_s', time=3309.00.
+Warning: Teleporting vehicle 'veh2530'; waited too long (yield), lane='fh_w_F1_2', time=3313.00.
+Warning: Vehicle 'veh2530' ends teleporting on edge 'F1_B1', time=3313.00.
+Warning: Teleporting vehicle 'veh2648'; waited too long (yield), lane='B3_B2_2', time=3445.00.
+Warning: Teleporting vehicle 'veh2704'; waited too long (yield), lane='F3_B3_2', time=3481.00.
+Warning: Vehicle 'veh2704' ends teleporting on edge 'B3_B2', time=3481.00.
+Warning: Teleporting vehicle 'veh3302'; waited too long (jam), lane='B4_B3_2', time=3527.00.
+Warning: Vehicle 'veh3302' ends teleporting on edge 'B3_B2', time=3527.00.
+Warning: Vehicle 'veh2648' ends teleporting on edge 'B2_B1', time=3539.00.
+Warning: Teleporting vehicle 'veh4018'; waited too long (jam), lane='carthage_s_F3_2', time=3540.00.
+Warning: Teleporting vehicle 'veh2749'; waited too long (yield), lane='F1_F3_2', time=3548.00.
+Warning: Teleporting vehicle 'veh4219'; waited too long (yield), lane='mv_s_F4_2', time=3734.00.
+Warning: Vehicle 'veh4219' ends teleporting on edge 'F4_B4', time=3797.00.
+Warning: Vehicle 'veh2749' ends teleporting on edge 'F3_B3', time=3811.00.
+Warning: Vehicle 'veh4018' ends teleporting on edge 'F3_B3', time=3859.00.

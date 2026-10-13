@@ -1,0 +1,14 @@
+<additional>
+  <busStop id="stop_bab_bhar_B1" lane="bab_bhar_B1_1" startPos="242.8" endPos="262.8" lines="L1_east" name="Rue de Rome x Av. de France / Bourguiba"><param key="junction" value="B1"/></busStop>
+  <busStop id="stop_B1_B2" lane="B1_B2_1" startPos="240.8" endPos="260.8" lines="L1_east" name="Theatre municipal pedestrian crossing"><param key="junction" value="B2"/></busStop>
+  <busStop id="stop_B2_B3" lane="B2_B3_1" startPos="187.6" endPos="207.6" lines="L1_east" name="Av. de Paris / Av. de Carthage x Bourguiba"><param key="junction" value="B3"/></busStop>
+  <busStop id="stop_B3_B4" lane="B3_B4_1" startPos="326.0" endPos="346.0" lines="L1_east" name="Place du 14 Janvier 2011 (Av. Mohamed V)"><param key="junction" value="B4"/></busStop>
+  <busStop id="stop_tunis_marine_B4" lane="tunis_marine_B4_1" startPos="336.4" endPos="356.4" lines="L1_west" name="Place du 14 Janvier 2011 (Av. Mohamed V)"><param key="junction" value="B4"/></busStop>
+  <busStop id="stop_B4_B3" lane="B4_B3_1" startPos="326.0" endPos="346.0" lines="L1_west" name="Av. de Paris / Av. de Carthage x Bourguiba"><param key="junction" value="B3"/></busStop>
+  <busStop id="stop_B3_B2" lane="B3_B2_1" startPos="187.6" endPos="207.6" lines="L1_west" name="Theatre municipal pedestrian crossing"><param key="junction" value="B2"/></busStop>
+  <busStop id="stop_B2_B1" lane="B2_B1_1" startPos="240.8" endPos="260.8" lines="L1_west" name="Rue de Rome x Av. de France / Bourguiba"><param key="junction" value="B1"/></busStop>
+  <busStop id="stop_mv_n_B4" lane="mv_n_B4_1" startPos="239.6" endPos="259.6" lines="L2_south" name="Place du 14 Janvier 2011 (Av. Mohamed V)"><param key="junction" value="B4"/></busStop>
+  <busStop id="stop_B4_F4" lane="B4_F4_1" startPos="329.2" endPos="349.2" lines="L2_south" name="Av. Mohamed V (south) x Av. Farhat Hached"><param key="junction" value="F4"/></busStop>
+  <busStop id="stop_mv_s_F4" lane="mv_s_F4_1" startPos="239.6" endPos="259.6" lines="L2_north" name="Av. Mohamed V (south) x Av. Farhat Hached"><param key="junction" value="F4"/></busStop>
+  <busStop id="stop_F4_B4" lane="F4_B4_1" startPos="329.2" endPos="349.2" lines="L2_north" name="Place du 14 Janvier 2011 (Av. Mohamed V)"><param key="junction" value="B4"/></busStop>
+</additional>

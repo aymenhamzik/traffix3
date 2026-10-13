@@ -1,0 +1,108 @@
+{
+ "demand_forecast": {
+  "test_year": 2026,
+  "mae_level": 0.023,
+  "mae_level_naive_same_date": 0.044,
+  "mae_level_ramadan": 0.026,
+  "mae_level_ramadan_naive": 0.103,
+  "mae_inbound_share": 0.024
+ },
+ "incident": {
+  "rows": 181442,
+  "positives": 1022,
+  "precision": 0.289,
+  "recall": 0.934,
+  "f1": 0.442,
+  "rule_f1": 0.045
+ },
+ "pedestrian": {
+  "rows": 20832,
+  "positives": 614,
+  "precision": 0.164,
+  "recall": 0.837,
+  "f1": 0.274,
+  "rule_f1": 0.0
+ },
+ "ambulance_eta": {
+  "rows": 844,
+  "mae": 18.91,
+  "rule_mae": 37.14
+ },
+ "bus_eta": {
+  "rows": 71250,
+  "mae": 25.72,
+  "rule_mae": 56.84
+ },
+ "bus_lateness": {
+  "rows": 1441,
+  "mae": 57.39,
+  "rule_mae": 94.8
+ },
+ "edge_travel_time": {
+  "rows": 78156,
+  "mae": 11.65,
+  "rule_mae": 33.31
+ },
+ "rain_speed": {
+  "rows": 1563,
+  "mae": 0.12,
+  "rule_mae": 0.35
+ },
+ "arrivals": {
+  "rows": 115934,
+  "mae": 1.48,
+  "rule_mae": 1.86
+ },
+ "sensor_health": {
+  "rows": 60976,
+  "positives": 976,
+  "precision": 1.0,
+  "recall": 0.984,
+  "f1": 0.992,
+  "rule_f1": 0.975
+ },
+ "notification": {
+  "rows": 105,
+  "training_accuracy": 1.0,
+  "note": "labels are our own rules; the model reproduces them"
+ },
+ "_versions": {
+  "scikit-learn": "1.9.1",
+  "numpy": "2.5.3",
+  "python": "3.14.7"
+ },
+ "rl_traffic_light": {
+  "method": "Fitted Q-Iteration, HistGradientBoosting",
+  "gamma": 0.9,
+  "rounds": [
+   {
+    "round": 1,
+    "behaviour": "max-pressure + exploration",
+    "wait_car_plus_ped_s": 141.12,
+    "transitions": 28314
+   },
+   {
+    "round": 2,
+    "behaviour": "learned policy + exploration",
+    "wait_car_plus_ped_s": 134.04,
+    "transitions": 56614
+   },
+   {
+    "round": 3,
+    "behaviour": "learned policy + exploration",
+    "wait_car_plus_ped_s": 156.33,
+    "transitions": 85005
+   },
+   {
+    "round": "final",
+    "behaviour": "learned policy, no exploration",
+    "wait_car_plus_ped_s": 133.49
+   },
+   {
+    "round": "reference",
+    "behaviour": "max-pressure alone (traffix)",
+    "wait_car_plus_ped_s": 116.25
+   }
+  ]
+ }
+}

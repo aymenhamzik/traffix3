@@ -1,0 +1,6 @@
+Warning: At actuated tlLogic 'B4', linkIndex 10,11,12 has no controlling detector.
+Warning: Not using public transport line 'L1_east' for routing persons. It has less than two usable stops.
+Warning: Not using public transport line 'L2_south' for routing persons. It has less than two usable stops.
+Warning: Not using public transport line 'L2_north' for routing persons. It has less than two usable stops.
+Warning: Person 'ped640' is jammed on edge ':F4_c3', time=2482.00.
+Warning: Person 'ped639' is jammed on edge ':F4_c3', time=2483.00.

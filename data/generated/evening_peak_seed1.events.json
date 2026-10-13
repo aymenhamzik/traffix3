@@ -1,0 +1,8 @@
+{
+ "scenario": "evening_peak",
+ "seed": 1,
+ "start": "2026-10-13 17:00",
+ "duration": 3600,
+ "events": {},
+ "vehicles": 3853
+}

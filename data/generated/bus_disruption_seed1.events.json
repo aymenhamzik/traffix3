@@ -1,0 +1,14 @@
+{
+ "scenario": "bus_disruption",
+ "seed": 1,
+ "start": "2026-10-13 08:00",
+ "duration": 3600,
+ "events": {
+  "bus_delay": {
+   "line": "L1_east",
+   "delay": 600,
+   "from_bus": 3
+  }
+ },
+ "vehicles": 3844
+}

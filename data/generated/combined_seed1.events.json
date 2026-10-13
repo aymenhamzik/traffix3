@@ -1,0 +1,25 @@
+{
+ "scenario": "combined",
+ "seed": 1,
+ "start": "2026-10-20 17:00",
+ "duration": 3600,
+ "events": {
+  "rain": {
+   "at": 300,
+   "intensity": 0.6
+  },
+  "incident": {
+   "edge": "B3_B4",
+   "lane": 1,
+   "at": 900,
+   "duration": 900
+  },
+  "ambulances": {
+   "count": 4
+  },
+  "fire_trucks": {
+   "count": 1
+  }
+ },
+ "vehicles": 3637
+}

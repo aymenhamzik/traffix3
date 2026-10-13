@@ -1,0 +1,81 @@
+# Calendar assumptions (set by the project team; not measured data).
+# The simulation uses these to GENERATE traffic. Agents never read this file:
+# they must learn the patterns from the traffic they observe.
+
+month_factor:   # 1 = Jan ... 12 = Dec
+  1: 1.00
+  2: 1.00
+  3: 1.00
+  4: 1.00
+  5: 1.00
+  6: 0.95
+  7: 0.75
+  8: 0.70
+  9: 1.15
+  10: 1.05
+  11: 1.05
+  12: 1.00
+
+weekday_factor:   # 0 = Monday ... 6 = Sunday
+  0: 1.00
+  1: 1.00
+  2: 1.00
+  3: 1.00
+  4: 0.95
+  5: 0.75
+  6: 0.55
+
+# Normal weekday: [hour, relative level, share of trips heading INTO the centre]
+hourly_profile:
+  - [0, 0.08, 0.5]
+  - [1, 0.06, 0.5]
+  - [2, 0.05, 0.5]
+  - [3, 0.05, 0.5]
+  - [4, 0.07, 0.5]
+  - [5, 0.15, 0.6]
+  - [6, 0.40, 0.65]
+  - [7, 0.80, 0.70]
+  - [8, 1.00, 0.70]     # morning peak 08:00-09:00, inbound
+  - [9, 0.80, 0.60]
+  - [10, 0.72, 0.5]
+  - [11, 0.72, 0.5]
+  - [12, 0.76, 0.5]
+  - [13, 0.75, 0.5]
+  - [14, 0.74, 0.45]
+  - [15, 0.78, 0.4]
+  - [16, 0.88, 0.38]
+  - [17, 0.95, 0.35]    # evening peak 17:00-18:00, outbound
+  - [18, 0.82, 0.4]
+  - [19, 0.65, 0.45]
+  - [20, 0.50, 0.5]
+  - [21, 0.38, 0.5]
+  - [22, 0.25, 0.5]
+  - [23, 0.15, 0.5]
+
+# Ramadan replaces the hourly profile. Times relative to the clock or to sunset.
+ramadan_profile:
+  night: [0.15, 0.5]                    # 00:00-06:00
+  morning_build: [0.35, 0.65]           # 06:00-09:00
+  morning_peak: [0.75, 0.70]            # 09:00-10:00, later and smaller
+  midday: [0.60, 0.5]                   # 10:00 until the pre-iftar rush
+  pre_iftar_rush: [1.10, 0.25]          # 90 min before sunset, 75% outbound
+  iftar: [0.10, 0.5]                    # sunset to +30 min
+  after_iftar: [0.40, 0.5]              # +30 min to 21:00
+  evening: [0.70, 0.5]                  # 21:00-24:00
+  pre_iftar_minutes: 90
+  iftar_minutes: 30
+  evening_pedestrian_factor: 1.6        # more people walking at night
+
+hijri_events:   # replaces the weekday factor on those days
+  eid_al_fitr_days: 2
+  eid_al_fitr_factor: 0.40
+  eid_al_adha_days: 2
+  eid_al_adha_factor: 0.35
+  pre_eid_days: 3
+  pre_eid_evening_factor: 1.10          # 17:00-23:00 on the 3 days before each Eid
+  islamic_new_year_factor: 0.60
+  mawlid_factor: 0.60
+
+national_holidays:   # [month, day]: factor replaces the weekday factor
+  factor: 0.60
+  dates: [[1, 1], [3, 20], [4, 9], [5, 1], [7, 25], [8, 13], [10, 15], [12, 17]]

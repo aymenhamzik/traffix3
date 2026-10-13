@@ -1,0 +1,1 @@
+Warning: At actuated tlLogic 'B4', linkIndex 10,11,12 has no controlling detector.

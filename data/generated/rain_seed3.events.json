@@ -1,0 +1,17 @@
+{
+ "scenario": "rain",
+ "seed": 3,
+ "start": "2026-11-10 08:00",
+ "duration": 3600,
+ "events": {
+  "rain": {
+   "at": 600,
+   "intensity": 0.5,
+   "heavy_at": 1500,
+   "heavy_intensity": 1.0,
+   "flood_edge": "F3_F4",
+   "flood_at": 1800
+  }
+ },
+ "vehicles": 3806
+}

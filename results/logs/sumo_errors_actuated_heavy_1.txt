@@ -1,0 +1,17 @@
+Warning: At actuated tlLogic 'B4', linkIndex 10,11,12 has no controlling detector.
+Warning: Not using public transport line 'L2_south' for routing persons. It has less than two usable stops.
+Warning: Collision of person 'ped283' and person 'ped312', lane=':B1_c2_0', time=1075.00.
+Warning: Collision of person 'ped283' and person 'ped312', lane=':B1_c2_0', time=1076.00.
+Warning: Collision of person 'ped478' and person 'ped512', lane=':B4_c3_0', time=1973.00.
+Warning: Collision of person 'ped478' and person 'ped512', lane=':B4_c3_0', time=1974.00.
+Warning: Person 'ped435' is jammed on edge ':B3_w2', time=2174.00.
+Warning: Teleporting vehicle 'veh2030'; waited too long (jam), lane=':B3_5_1', time=2181.00.
+Warning: Vehicle 'veh2030' ends teleporting on edge 'B3_B2', time=2181.00.
+Warning: Teleporting vehicle 'veh2355'; waited too long (jam), lane=':B3_13_1', time=2182.00.
+Warning: Teleporting vehicle 'veh2092'; waited too long (yield), lane=':B3_11_0', time=2182.00.
+Warning: Vehicle 'veh2092' ends teleporting on edge 'B3_B2', time=2182.00.
+Warning: Vehicle 'veh2355' ends teleporting on edge 'B3_B4', time=2182.00.
+Warning: Teleporting vehicle 'veh2392'; waited too long (yield), lane=':B3_3_0', time=2183.00.
+Warning: Vehicle 'veh2392' ends teleporting on edge 'B3_B4', time=2183.00.
+Warning: Teleporting vehicle 'veh3694'; waited too long (yield), lane='rome_s_F1_1', time=3362.00.
+Warning: Vehicle 'veh3694' ends teleporting on edge 'F1_B1', time=3362.00.

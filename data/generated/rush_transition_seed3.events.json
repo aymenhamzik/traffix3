@@ -1,0 +1,8 @@
+{
+ "scenario": "rush_transition",
+ "seed": 3,
+ "start": "2026-10-13 06:30",
+ "duration": 10800,
+ "events": {},
+ "vehicles": 10821
+}

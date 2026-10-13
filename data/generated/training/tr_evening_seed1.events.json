@@ -1,0 +1,8 @@
+{
+ "scenario": "tr_evening",
+ "seed": 1,
+ "start": "2025-11-18 17:00",
+ "duration": 1800,
+ "events": {},
+ "vehicles": 1989
+}

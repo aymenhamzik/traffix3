@@ -1,0 +1,15 @@
+{
+ "scenario": "tr_rain",
+ "seed": 2,
+ "start": "2025-11-12 08:00",
+ "duration": 1800,
+ "events": {
+  "rain": {
+   "at": 300,
+   "intensity": 0.4,
+   "heavy_at": 1000,
+   "heavy_intensity": 1.0
+  }
+ },
+ "vehicles": 2025
+}

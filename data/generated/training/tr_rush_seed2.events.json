@@ -1,0 +1,8 @@
+{
+ "scenario": "tr_rush",
+ "seed": 2,
+ "start": "2025-10-14 07:15",
+ "duration": 1800,
+ "events": {},
+ "vehicles": 1790
+}

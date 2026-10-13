@@ -1,0 +1,18 @@
+Warning: Not using public transport line 'L2_south' for routing persons. It has less than two usable stops.
+Warning: Not using public transport line 'L1_east' for routing persons. It has less than two usable stops.
+Warning: Person 'ped2235' is jammed on edge ':F1_c1', time=7551.00.
+Warning: Person 'ped1927' is jammed on edge ':F1_c1', time=7667.00.
+Warning: Person 'ped2237' is jammed on edge ':F1_c1', time=7668.00.
+Warning: Teleporting vehicle 'veh6771'; waited too long (yield), lane=':F1_13_0', time=7795.00.
+Warning: Vehicle 'veh6771' ends teleporting on edge 'F1_B1', time=7795.00.
+Warning: Person 'ped2093' is jammed on edge ':F1_w1', time=7796.00.
+Warning: Teleporting vehicle 'veh6720'; waited too long (yield), lane=':F1_21_0', time=7798.00.
+Warning: Teleporting vehicle 'veh7154'; waited too long (yield), lane=':F1_3_0', time=7798.00.
+Warning: Vehicle 'veh6720' ends teleporting on edge 'F1_B1', time=7798.00.
+Warning: Vehicle 'veh7154' ends teleporting on edge 'F1_B1', time=7798.00.
+Warning: Teleporting vehicle 'veh7124'; waited too long (yield), lane='F3_F1_1', time=7801.00.
+Warning: Vehicle 'veh7124' ends teleporting on edge 'F1_B1', time=7801.00.
+Warning: Person 'ped1835' is jammed on edge ':F1_w0', time=7809.00.
+Warning: Person 'ped2665' is jammed on edge ':B1_c2', time=9351.00.
+Warning: Person 'ped2817' is jammed on edge ':B4_c2', time=9670.00.
+Warning: Vehicle 'veh9445' performs emergency braking on lane 'B3_B4_2' with decel=9.00, wished=4.50, severity=1.00, time=9671.00.

@@ -1,0 +1,25 @@
+Warning: Not using public transport line 'L2_north' for routing persons. It has less than two usable stops.
+Warning: Not using public transport line 'L1_west' for routing persons. It has less than two usable stops.
+Warning: Teleporting vehicle 'veh385'; waited too long (yield), lane='tunis_marine_B4_1', time=689.00.
+Warning: Teleporting vehicle 'veh205'; waited too long (yield), lane='B3_B4_1', time=689.00.
+Warning: Vehicle 'veh205' ends teleporting on edge 'B4_tunis_marine', time=689.00.
+Warning: Vehicle 'veh385' ends teleporting on edge 'B4_B3', time=689.00.
+Warning: Person 'ped119' is jammed on edge ':B4_w1', time=693.00.
+Warning: Person 'ped26' is jammed on edge ':B4_w2', time=697.00.
+Warning: Teleporting vehicle 'veh211'; waited too long (yield), lane='B3_B4_2', time=697.00.
+Warning: Vehicle 'veh211' ends teleporting on edge 'B4_mv_n', time=697.00.
+Warning: Teleporting vehicle 'veh402'; waited too long (yield), lane='tunis_marine_B4_2', time=701.00.
+Warning: Vehicle 'veh402' ends teleporting on edge 'B4_F4', time=701.00.
+Warning: Person 'ped114' is jammed on edge ':B4_w1', time=703.00.
+Warning: Person 'ped29' is jammed on edge ':B4_w2', time=705.00.
+Warning: Teleporting vehicle 'veh423'; waited too long (yield), lane='mv_n_B4_1', time=713.00.
+Warning: Vehicle 'veh423' ends teleporting on edge 'B4_F4', time=713.00.
+Warning: Teleporting vehicle 'veh155'; waited too long (yield), lane='F4_B4_1', time=721.00.
+Warning: Vehicle 'veh155' ends teleporting on edge 'B4_tunis_marine', time=721.00.
+Warning: Teleporting vehicle 'veh210'; waited too long (yield), lane='F4_B4_1', time=740.00.
+Warning: Vehicle 'veh210' ends teleporting on edge 'B4_mv_n', time=740.00.
+Warning: Person 'ped140' is jammed on edge ':B4_w1', time=742.00.
+Warning: Teleporting vehicle 'veh447'; waited too long (yield), lane='mv_n_B4_1', time=744.00.
+Warning: Vehicle 'veh447' ends teleporting on edge 'B4_F4', time=744.00.
+Warning: Teleporting vehicle 'veh386'; waited too long (yield), lane='F4_B4_1', time=773.00.
+Warning: Vehicle 'veh386' ends teleporting on edge 'B4_tunis_marine', time=773.00.

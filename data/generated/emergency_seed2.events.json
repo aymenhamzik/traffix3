@@ -1,0 +1,18 @@
+{
+ "scenario": "emergency",
+ "seed": 2,
+ "start": "2026-10-14 11:00",
+ "duration": 3600,
+ "events": {
+  "ambulances": {
+   "count": 6
+  },
+  "police": {
+   "count": 2
+  },
+  "fire_trucks": {
+   "count": 1
+  }
+ },
+ "vehicles": 3142
+}

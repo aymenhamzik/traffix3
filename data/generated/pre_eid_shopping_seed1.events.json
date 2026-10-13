@@ -1,0 +1,15 @@
+{
+ "scenario": "pre_eid_shopping",
+ "seed": 1,
+ "start": "2026-03-18 19:00",
+ "duration": 3600,
+ "events": {
+  "surge": {
+   "towards": "B3",
+   "at": 600,
+   "duration": 900,
+   "extra_vehicles": 400
+  }
+ },
+ "vehicles": 2188
+}

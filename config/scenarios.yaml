@@ -1,0 +1,66 @@
+# Each scenario = a date and time (calendar layers set the demand) + events.
+# start: "YYYY-MM-DD HH:MM" or "YYYY-MM-DD sunset-HH:MM" (minutes before sunset)
+# Events are hidden from the agents; they must discover them.
+
+offpeak:
+  start: "2026-10-14 11:00"
+  duration: 3600
+morning_peak:
+  start: "2026-10-13 08:00"
+  duration: 3600
+evening_peak:
+  start: "2026-10-13 17:00"
+  duration: 3600
+heavy:
+  description: September peak with extra load, close to saturation
+  start: "2026-09-15 08:00"
+  duration: 3600
+  demand_multiplier: 1.05
+incident:
+  start: "2026-10-20 17:00"
+  duration: 3600
+  events:
+    incident: {edge: B3_B4, lane: 1, at: 900, duration: 900}
+    sensor_fault: {tls: B3, at: 1500, duration: 600}
+emergency:
+  description: ambulances, police cars and a fire truck crossing the centre
+  start: "2026-10-14 11:00"
+  duration: 3600
+  events:
+    ambulances: {count: 6}
+    police: {count: 2}
+    fire_trucks: {count: 1}
+rain:
+  start: "2026-11-10 08:00"
+  duration: 3600
+  events:
+    rain: {at: 600, intensity: 0.5, heavy_at: 1500, heavy_intensity: 1.0,
+           flood_edge: F3_F4, flood_at: 1800}
+bus_disruption:
+  start: "2026-10-13 08:00"
+  duration: 3600
+  events:
+    bus_delay: {line: L1_east, delay: 600, from_bus: 3}
+rush_transition:
+  description: three hours following the morning profile
+  start: "2026-10-13 06:30"
+  duration: 10800
+ramadan_pre_iftar:
+  description: the rush home in the 90 minutes before sunset
+  start: "2026-03-05 sunset-01:45"
+  duration: 3600
+pre_eid_shopping:
+  description: evening shopping surge two days before Eid al-Fitr
+  start: "2026-03-18 19:00"
+  duration: 3600
+  events:
+    surge: {towards: B3, at: 600, duration: 900, extra_vehicles: 400}
+combined:
+  description: evening peak with rain, an incident and ambulances at once
+  start: "2026-10-20 17:00"
+  duration: 3600
+  events:
+    rain: {at: 300, intensity: 0.6}
+    incident: {edge: B3_B4, lane: 1, at: 900, duration: 900}
+    ambulances: {count: 4}
+    fire_trucks: {count: 1}

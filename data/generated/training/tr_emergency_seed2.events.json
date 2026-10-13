@@ -1,0 +1,12 @@
+{
+ "scenario": "tr_emergency",
+ "seed": 2,
+ "start": "2025-10-15 11:00",
+ "duration": 1800,
+ "events": {
+  "ambulances": {
+   "count": 6
+  }
+ },
+ "vehicles": 915
+}

@@ -1,0 +1,64 @@
+# Agent and safety settings. Safety rules are never learned.
+safety:
+  min_green: 5                 # s
+  yellow: 3                    # s
+  max_clearance_hold: 30       # s
+  clearance_speed: 1.07        # m/s design walking speed
+  exit_full_ratio: 0.85
+  stale_after: 10              # s
+
+# Fixed priority order used by every master (highest first)
+priority_order: [safety, emergency, supermaster_directive, transit, pedestrian, normal]
+
+traffic_light:                 # max-pressure parameters (tuned by training)
+  ped_weight: 0.5
+  switch_margin: 0.0
+  downstream_queued_only: true
+  fallback_fixed_green: 30
+  actuated_gap: 3
+  actuated_max_green: 45
+
+pedestrian:
+  max_wait: 45                 # s, rule fallback: request a walk signal after this
+  heat_max_wait: 30            # during heat (weather directive)
+
+transit:
+  late_factor: 1.5             # gap > 1.5 x headway = late bus
+  detect_distance: 120         # m
+  max_extension: 20            # s
+
+emergency:
+  detect_distance: 200         # m
+  prepare_horizon: 40          # s, route coordinator warns junctions this far ahead
+
+incident:
+  persist: 45                  # s (rule fallback)
+  min_confidence: 0.6
+
+weather:
+  rain_extra_yellow: 1         # s added to yellow in rain (directive)
+  rain_extra_clearance: 3      # s added to clearance in rain
+
+predictive:                    # MPC traffic light agent (tuned by training)
+  ped_person: 1.0              # a waiting pedestrian weighs like this many waiting cars
+  ped_urgency: 30              # s: pedestrian cost doubles after this much waiting
+  sat_flow: 0.5                # vehicles/s/lane discharged on green
+  min_gain: 0.0                # switch only if predicted waiting drops by this share
+
+corridor:
+  platoon_weight: 0.3          # tuned by training
+  horizon: 20                  # s of upstream travel counted as "arriving soon"
+
+rerouting:
+  min_saving: 20               # s per vehicle
+
+congestion:                    # incident agent also publishes plain congestion
+  halting: 10                  # stopped vehicles on one road
+  persist: 45                  # s before it counts as congestion
+  clear_below: 5               # stopped vehicles to clear it
+
+notification:
+  peak_level: 0.9              # forecast level that triggers a "peak coming" alert
+  ambulance_horizon: 60        # s: warn drivers and pedestrians this far ahead
+
+models_dir: models

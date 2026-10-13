@@ -1,0 +1,20 @@
+{
+ "scenario": "tr_incident_a",
+ "seed": 2,
+ "start": "2025-10-21 17:00",
+ "duration": 1800,
+ "events": {
+  "incident": {
+   "edge": "B2_B3",
+   "lane": 1,
+   "at": 300,
+   "duration": 900
+  },
+  "sensor_fault": {
+   "tls": "F3",
+   "at": 1300,
+   "duration": 300
+  }
+ },
+ "vehicles": 1937
+}

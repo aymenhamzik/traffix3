@@ -1,0 +1,18 @@
+Warning: Not using public transport line 'L2_south' for routing persons. It has less than two usable stops.
+Warning: Person 'ped242' is jammed on edge ':F3_c3', time=1469.00.
+Warning: Vehicle 'veh1416' performs emergency braking on lane ':F3_13_1' with decel=9.00, wished=4.50, severity=1.00, time=2023.00.
+Warning: Person 'ped518' is jammed on edge ':F1_w2', time=2373.00.
+Warning: Teleporting vehicle 'veh1484'; waited too long (yield), lane='F3_F1_2', time=2387.00.
+Warning: Vehicle 'veh1484' ends teleporting on edge 'F1_fh_w', time=2387.00.
+Warning: Teleporting vehicle 'veh1469'; waited too long (yield), lane=':F1_2_0', time=2390.00.
+Warning: Vehicle 'veh1469' ends teleporting on edge 'F1_F3', time=2390.00.
+Warning: Teleporting vehicle 'veh1561'; waited too long (yield), lane=':F1_13_0', time=2401.00.
+Warning: Vehicle 'veh1561' ends teleporting on edge 'F1_B1', time=2401.00.
+Warning: Teleporting vehicle 'veh1532'; waited too long (yield), lane=':F1_21_0', time=2402.00.
+Warning: Vehicle 'veh1532' ends teleporting on edge 'F1_B1', time=2402.00.
+Warning: Person 'ped284' is jammed on edge ':B1_c2', time=2580.00.
+Warning: Person 'ped881' is jammed on edge ':F1_c0', time=3110.00.
+Warning: Teleporting vehicle 'veh3583'; waited too long (yield), lane='rome_s_F1_1', time=4254.00.
+Warning: Vehicle 'veh3583' ends teleporting on edge 'F1_B1', time=4259.00.
+Warning: Teleporting vehicle 'veh2628'; waited too long (yield), lane='B2_B1_2', time=4321.00.
+Warning: Vehicle 'veh2628' ends teleporting on edge 'B1_F1', time=4391.00.

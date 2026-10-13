@@ -1,0 +1,8 @@
+{
+ "scenario": "offpeak",
+ "seed": 1,
+ "start": "2026-10-14 11:00",
+ "duration": 3600,
+ "events": {},
+ "vehicles": 3232
+}

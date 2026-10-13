@@ -1,0 +1,8 @@
+{
+ "scenario": "ramadan_pre_iftar",
+ "seed": 2,
+ "start": "2026-03-05 16:32",
+ "duration": 3600,
+ "events": {},
+ "vehicles": 4057
+}
