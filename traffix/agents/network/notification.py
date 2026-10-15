@@ -8,6 +8,7 @@ classifier deciding which personas an event is relevant to. Its labels come
 from rules we wrote (no real users click on alerts), so it learns our
 assumptions back: useful for the pipeline, not evidence of user preference.
 """
+from ...synapse.i18n import LANGS, alert_text
 from ..base import Agent
 
 PERSONAS = ["pedestrian", "car_driver", "bus_passenger", "bus_driver",
@@ -60,7 +61,7 @@ class NotificationAgent(Agent):
 
     def __init__(self, ctx):
         super().__init__(ctx)
-        self.seen, self.log_pos = set(), 0
+        self.seen, self.log_pos, self.next_id = set(), 0, 1
         n = len(relevance_features(EVENT_TYPES[0], PERSONAS[0]))
         if self.model is not None and getattr(self.model, "n_features_in_", n) != n:
             print("[TraffiX] notification model is out of date (alert types changed); using rules. "
@@ -83,12 +84,16 @@ class NotificationAgent(Agent):
             text = template.format(**fields)
         except (KeyError, ValueError):
             text = event_type
+        simple = {k: v for k, v in fields.items() if isinstance(v, (str, int, float))}
+        texts = {lang: alert_text(event_type, lang, simple) or text for lang in LANGS}
         for persona in PERSONAS:
             if self.relevant(event_type, persona):
-                self.bus.notifications.append({"t": now, "time": self.ctx.clock(now).strftime("%H:%M:%S"),
+                self.bus.notifications.append({"id": self.next_id, "t": now,
+                                               "time": self.ctx.clock(now).strftime("%H:%M:%S"),
                                                "persona": persona, "type": event_type,
-                                               "severity": severity, "text": text, "ref": ref,
-                                               "where": where or {}})
+                                               "severity": severity, "text": text, "texts": texts,
+                                               "fields": simple, "ref": ref, "where": where or {}})
+                self.next_id += 1
         del self.bus.notifications[:-self.KEEP]
 
     def step(self, now):

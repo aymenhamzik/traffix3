@@ -62,3 +62,15 @@ notification:
   ambulance_horizon: 60        # s: warn drivers and pedestrians this far ahead
 
 models_dir: models
+
+synapse:                       # language agents: set ANTHROPIC_API_KEY or GROQ_API_KEY (optional)
+  provider: auto               # auto | anthropic | groq
+  languages: [en, fr, ar]
+  explainer_model: claude-sonnet-5-5
+  copilot_model: claude-sonnet-5-5
+  alert_model: claude-haiku-4-5-20251001     # fast and cheap: alerts are short and frequent
+  groq_explainer_model: llama-3.3-70b-versatile    # check names at console.groq.com/docs/models
+  groq_copilot_model: llama-3.3-70b-versatile
+  groq_alert_model: llama-3.1-8b-instant
+  copilot_every: 180           # simulated seconds between copilot summaries
+  alert_batch_every: 5         # real seconds between alert rewriting batches

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
+import { LangContext } from "./i18n.js";
 import { PERSONAS, useLive } from "./api.js";
 import ScenarioBar from "./components/ScenarioBar.jsx";
 import Home from "./pages/Home.jsx";
@@ -13,9 +15,14 @@ import Results from "./pages/Results.jsx";
 
 export default function App() {
   const live = useLive();
+  const [lang, setLangState] = useState(() => {
+    try { return localStorage.getItem("traffix-lang") || "en"; } catch { return "en"; }
+  });
+  const setLang = (l) => { setLangState(l); try { localStorage.setItem("traffix-lang", l); } catch {} };
   const pages = { pedestrian: Pedestrian, car_driver: CarDriver, bus_passenger: BusPassenger,
                   bus_driver: BusDriver, emergency_crew: EmergencyCrew, operator: Operator, analyst: Analyst };
   return (
+    <LangContext.Provider value={{ lang, setLang }}>
     <div className="app">
       <aside className="side">
         <div className="brand">Traffi<span>X</span></div>
@@ -39,5 +46,6 @@ export default function App() {
         </Routes>
       </main>
     </div>
+    </LangContext.Provider>
   );
 }

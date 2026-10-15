@@ -14,6 +14,8 @@ import sumolib
 from ..core import config
 from ..core.decision_log import DecisionLog
 from ..core.narrate import Narrator
+from ..synapse.alert_writer import AlertWriter
+from ..synapse.copilot import Copilot
 from ..agents.network.rerouting import shortest
 from ..demand.generator import BUS_LINES, DemandGenerator, classify_edges
 from ..orchestration.system import TraffixSystem
@@ -162,11 +164,16 @@ class LiveRun:
         return out
 
     def start(self):
+        self.copilot = Copilot(self)
+        self.alert_writer = AlertWriter(self)
+        self.alert_writer.start()
         self.running = True
         threading.Thread(target=self._run, daemon=True).start()
 
     def stop(self):
         self.running = False
+        if hasattr(self, "alert_writer"):
+            self.alert_writer.stop()
 
     def _run(self):
         net = config.network_files()[0]

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api, useOnce } from "../api.js";
 import { Waiting } from "../components/Feed.jsx";
+import { dirOf, useLang } from "../i18n.js";
 
 export default function Analyst({ live }) {
   const [q, setQ] = useState("");
@@ -9,6 +10,7 @@ export default function Analyst({ live }) {
   const [answer, setAnswer] = useState(null);
   const [error, setError] = useState("");
   const metrics = useOnce("/models");
+  const { lang } = useLang();
   const hasEmergency = ["emergency", "combined"].includes(live.scenario);
   const examples = hasEmergency
     ? ["Why did ambulance 0 get green?", "What happened with the fire truck 0?", "Was any emergency vehicle denied?"]
@@ -24,7 +26,7 @@ export default function Analyst({ live }) {
     if (!question.trim()) { setError("Type a question first"); return; }
     setError("");
     try { setAnswer(await api("/ask", { method: "POST", headers: { "Content-Type": "application/json" },
-                                         body: JSON.stringify({ question }) })); }
+                                         body: JSON.stringify({ question, lang }) })); }
     catch (e) { setError(String(e)); }
   };
   return (
@@ -44,8 +46,10 @@ export default function Analyst({ live }) {
           ))}
         </div>
         {error && <span style={{ color: "#f4a497", fontSize: 13 }}>{error}</span>}
-        {answer && <div className="answer">
-          <span className={`pill ${answer.abstained ? "warn" : "ok"}`}>{answer.abstained ? "abstained" : `${answer.citations.length} citations`}</span>{"\n"}{answer.answer}</div>}
+        {answer && <div className="answer" dir={dirOf(lang)}>
+          <span className={`pill ${answer.abstained ? "warn" : "ok"}`}>{answer.abstained ? "abstained" : `${answer.citations.length} citations`}</span>
+          <span className="muted" style={{ fontSize: 12, marginInlineStart: 8 }}>{answer.engine === "llm-agent"
+            ? `LLM agent · ${answer.tool_calls?.length || 0} tool calls` : "templates"}</span>{"\n"}{answer.answer}</div>}
       </div>
       <div className="split">
         <div className="card">

@@ -17,10 +17,11 @@ Two engines:
 import json
 import os
 import re
-import urllib.request
 
 from ...core.decision_log import REASON_CODES
 from ...core.narrate import Narrator
+from ...synapse import llm as synapse_llm
+from ...synapse.i18n import EXPLAIN, LANG_NAMES, phrase
 
 KEYWORDS = {
     "ambulance": ["EMERGENCY", "RECOVER"], "emergency": ["EMERGENCY", "RECOVER"],
@@ -103,49 +104,65 @@ def _format(e, narrator):
 
 
 def _llm(question, selected, model, narrator):
-    body = json.dumps({
-        "model": model, "max_tokens": 600, "system": SYSTEM_PROMPT,
-        "messages": [{"role": "user", "content":
-                      "Log entries:\n" + "\n".join(_format(e, narrator) for e in selected)
-                      + f"\n\nQuestion: {question}"}]}).encode()
-    req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages", data=body,
-        headers={"content-type": "application/json", "anthropic-version": "2023-06-01",
-                 "x-api-key": os.environ["ANTHROPIC_API_KEY"]})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        data = json.load(r)
-    return "".join(b.get("text", "") for b in data["content"]).strip()
+    return synapse_llm.chat(model or "explainer", SYSTEM_PROMPT,
+                            "Log entries:\n" + "\n".join(_format(e, narrator) for e in selected)
+                            + f"\n\nQuestion: {question}")[0]
 
 
-def _template(question, selected, narrator):
+def _template(question, selected, narrator, lang="en"):
     """Plain-language answer without a language model: one sentence per decision."""
     from collections import Counter
     who = Counter(narrator.vehicle(e["details"]["vehicle"]) for e in selected if e["details"].get("vehicle"))
     lines = []
     if len(selected) > 1:
-        about = f" about {who.most_common(1)[0][0]}" if len(who) == 1 else ""
-        lines.append(f"I found {len(selected)} decisions{about}:")
+        about = phrase(EXPLAIN, "about", lang, who=who.most_common(1)[0][0]) if len(who) == 1 else ""
+        lines.append(phrase(EXPLAIN, "found", lang, n=len(selected), about=about))
+    if lang != "en":
+        lines.append(EXPLAIN["note"][lang])
     for e in selected[:10]:
         lines.append(f"- {narrator.describe(e)} [#{e['id']}]")
     if len(selected) > 10:
-        lines.append(f"... and {len(selected) - 10} more.")
+        lines.append(f"... +{len(selected) - 10}")
     return "\n".join(lines)
 
 
-def explain(entries, question, engine="auto", model=None, narrator=None):
+AGENT_SYSTEM = """You are Synapse, the explainer of a SIMULATED traffic control system for central Tunis.
+Answer the question in {language}, in at most 6 sentences, using ONLY what the tools return.
+Cite every factual claim with its log entry id like [#412]. Use search_log to find decisions
+(try vehicle names like ambulance0, junction ids like B3, or topics like bus, crossing, incident, rain);
+get_live_state for the current situation; get_results for experiment results.
+Never guess a cause the log does not state. If the tools do not answer the question, reply exactly:
+ABSTAIN: <one sentence saying what is missing, in {language}>."""
+
+TOOLS = [
+    {"name": "search_log", "description": "Search the decision log. Returns matching entries as plain sentences with their ids.",
+     "input_schema": {"type": "object", "properties": {"query": {"type": "string"}}, "required": ["query"]}},
+    {"name": "get_live_state", "description": "Current simulation state: clock, junction modes and queues, incidents, congestion, weather.",
+     "input_schema": {"type": "object", "properties": {}}},
+    {"name": "get_results", "description": "Experiment results (mean over seeds) for a persona measure, by scenario and controller.",
+     "input_schema": {"type": "object", "properties": {"measure": {"type": "string",
+                      "description": "e.g. car wait, pedestrian wait, clearance truncations, ambulance trip"}}}},
+]
+
+
+def explain(entries, question, engine="auto", model=None, narrator=None, lang="en", tools=None):
+    """tools: optional {"get_live_state": fn, "get_results": fn(measure)} for the tool-using agent."""
     """Returns {"answer", "citations", "abstained", "engine"}."""
     narrator = narrator or Narrator()
+    if lang not in LANG_NAMES:
+        lang = "en"
+    if (engine == "auto" and synapse_llm.available()) or engine == "agent":
+        return _agent(entries, question, narrator, lang, tools or {}, model)
     selected, why_empty = select_entries(entries, question)
     if not selected:
         return {"answer": f"ABSTAIN: {why_empty}, so I cannot explain it without guessing.",
                 "citations": [], "abstained": True, "engine": "none"}
     if engine == "auto":
-        engine = "llm" if os.environ.get("ANTHROPIC_API_KEY") else "template"
+        engine = "llm" if synapse_llm.available() else "template"
     if engine == "llm":
-        model = model or os.environ.get("SYNAPSE_MODEL", "claude-sonnet-5-5")
-        answer = _llm(question, selected, model, narrator)
+        answer = _llm(question, selected, model or os.environ.get("SYNAPSE_MODEL") or "explainer", narrator)
     else:
-        answer = _template(question, selected, narrator)
+        answer = _template(question, selected, narrator, lang)
 
     if answer.startswith("ABSTAIN"):
         return {"answer": answer, "citations": [], "abstained": True, "engine": engine}
@@ -166,5 +183,37 @@ class ExplainerAgent:
     def __init__(self, entries, narrator=None):
         self.entries, self.narrator = entries, narrator
 
-    def ask(self, question, engine="auto"):
-        return explain(self.entries, question, engine, narrator=self.narrator)
+    def ask(self, question, engine="auto", lang="en", tools=None):
+        return explain(self.entries, question, engine, narrator=self.narrator, lang=lang, tools=tools)
+
+
+def _agent(entries, question, narrator, lang, tools, model=None):
+    """Tool-using Claude agent: it decides what to look up, then answers with checked citations."""
+    import os
+    from ...core import config
+    model = model or os.environ.get("SYNAPSE_MODEL") or "explainer"
+
+    def search_log(query):
+        found, why = select_entries(entries, query, limit=15)
+        return {"entries": [{"id": e["id"], "text": narrator.describe(e)} for e in found]} if found else {"none": why}
+
+    handlers = {"search_log": search_log,
+                "get_live_state": tools.get("get_live_state", lambda: {"error": "no live run"}),
+                "get_results": tools.get("get_results", lambda measure="": {"error": "no results"})}
+    try:
+        answer, calls = synapse_llm.chat(model, AGENT_SYSTEM.format(language=LANG_NAMES[lang]), question,
+                                         tools=TOOLS, handlers=handlers, max_tokens=900)
+    except Exception as e:                       # API problem: fall back to templates
+        out = explain(entries, question, engine="template", narrator=narrator, lang=lang)
+        out["note"] = f"language model unavailable ({e.__class__.__name__}); template answer"
+        return out
+    if not answer or answer.startswith("ABSTAIN"):
+        return {"answer": answer or "ABSTAIN", "citations": [], "abstained": True, "engine": "llm-agent",
+                "tool_calls": calls}
+    cited = [int(x) for x in re.findall(r"\[#(\d+)\]", answer)]
+    valid = {e["id"] for e in entries}
+    if any(c not in valid for c in cited):
+        return {"answer": "ABSTAIN: the draft cited log entries that do not exist, so it was rejected.",
+                "citations": [], "abstained": True, "engine": "llm-agent", "tool_calls": calls}
+    return {"answer": answer, "citations": sorted(set(cited)), "abstained": False, "engine": "llm-agent",
+            "tool_calls": calls}

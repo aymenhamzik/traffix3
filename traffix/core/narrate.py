@@ -136,6 +136,8 @@ class Narrator:
             "WEATHER_CLEAR": lambda: "The rain stopped; normal signal timings restored.",
             "WEATHER_FLOOD": lambda: f"Flood alert: {self.edge(d.get('edge'))} is impassable; detours will avoid it.",
             "CORRIDOR_DIRECTION": lambda: f"Main traffic direction is now {d.get('direction', '?')}; corridor coordination follows it.",
+            "OPERATOR_APPROVED": lambda: f"The operator approved the copilot suggestion: \"{d.get('suggestion', '')}\" (recorded, not applied automatically).",
+            "OPERATOR_DISMISSED": lambda: f"The operator dismissed the copilot suggestion: \"{d.get('suggestion', '')}\".",
             "FORECAST_UPDATE": lambda: f"Forecast for {str(d.get('forecast_for', ''))[11:16] or 'the next half hour'}: traffic at "
                                        f"{pct(d.get('level'))} of the usual peak, {pct(d.get('inbound_share'))} heading into the centre.",
         }

@@ -64,6 +64,9 @@ REASON_CODES = {
     "CORRIDOR_DIRECTION": "Corridor agent: dominant direction changed; masters asked to favour it.",
     "FORECAST_UPDATE": "Demand forecasting agent published its forecast for the coming hour.",
     "DIRECTIVE_APPLIED": "The master applied a supermaster directive.",
+    # Operator decisions on copilot suggestions (recorded, never applied automatically)
+    "OPERATOR_APPROVED": "The operator approved a copilot suggestion (recorded; the system does not apply it automatically).",
+    "OPERATOR_DISMISSED": "The operator dismissed a copilot suggestion.",
     # Notifications
     "NOTIFICATION_SENT": "Notification agent sent a message to a persona page.",
 }

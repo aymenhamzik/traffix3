@@ -89,6 +89,30 @@ compare results with and without it.
 Safety rules (pedestrian clearance, yellow, minimum green, exit check) and the priority order are **never learned**.
 Neighbouring masters share queues directly; the frontend talks only to the supermaster's API.
 
+### The Synapse layer: language agents (English, French, Arabic)
+Three agents read the system and write text, never lights (`traffix/synapse/`, checked by
+`check_architecture.py`):
+- **Explainer** (analyst page): answers "why?" from the decision log in the chosen language.
+  With an API key it becomes a tool-using language-model agent (Claude or Groq) (search the log, live state, results);
+  every citation is checked, otherwise it abstains.
+- **Alert writer** (every persona page): each notification has built-in English, French and
+  Arabic texts; with a key, the language model rewrites them for each persona. A rewrite that changes any
+  number is rejected.
+- **Operator copilot** (operator page): situation summary, suggested actions citing log entries,
+  incident report drafts. Approve / Dismiss is **recorded in the decision log, never applied**.
+
+Without a key everything uses templates (offline). To use a language model, set ONE key in the same
+PowerShell window, then start the demo:
+
+    $env:ANTHROPIC_API_KEY="your-key"      # Claude (Anthropic)
+    $env:GROQ_API_KEY="your-key"           # or Groq (Llama models)
+    python scripts/run_live.py
+
+`provider: auto` in `config/agents.yaml` uses whichever key is set (Anthropic first). Groq model names
+are in the same file (`groq_*_model`); check console.groq.com/docs/models if one is retired.
+
+Models and timings: `config/agents.yaml > synapse`. Pick the language with EN / FR / عربي in the top bar.
+
 ## 5. Data and assumptions
 
 Demand = base x hour x weekday x month, from `config/calendar.yaml`:

@@ -11,7 +11,11 @@ which reads from the supermaster's live run; it never reaches the masters or SUM
   GET  /api/decisions?limit=200&q=ambulance
   GET  /api/places                          trip planner start and end points
   GET  /api/trip?origin=EDGE&destination=EDGE   personal route, delay, alerts, alternative
-  POST /api/ask  {"question": "..."}        explainer agent (Synapse)
+  POST /api/ask  {"question": "...", "lang": "en|fr|ar"}   explainer agent (Synapse)
+  GET  /api/copilot?lang=fr                 operator copilot summary + suggestions
+  POST /api/copilot/report?lang=ar          incident report draft
+  POST /api/copilot/decision                approve / dismiss a suggestion (recorded only)
+  GET  /api/llm                             is a language model available?
   GET  /api/results                         experiment summary (if available)
   GET  /api/models                          training metrics
 """
@@ -37,6 +41,13 @@ RUN = {"live": None}
 
 class Question(BaseModel):
     question: str
+    lang: str = "en"
+
+
+class Decision(BaseModel):
+    suggestion_id: str
+    title: str
+    decision: str          # "approve" | "dismiss"
 
 
 def live():
@@ -118,7 +129,40 @@ def trip(origin: str, destination: str):
 @app.post("/api/ask")
 def ask(body: Question):
     lv = live()
-    return ExplainerAgent(list(lv.log.entries), getattr(lv, "narrator", None)).ask(body.question)
+    tools = {"get_live_state": lambda: lv.copilot.context() if hasattr(lv, "copilot") else lv.state(),
+             "get_results": lambda measure="": [r for r in results()["summary"]
+                                                if measure.lower() in r["measure"].lower()][:120]}
+    return ExplainerAgent(list(lv.log.entries), getattr(lv, "narrator", None)).ask(body.question, lang=body.lang,
+                                                                                 tools=tools)
+
+
+@app.get("/api/llm")
+def llm_status():
+    """Is a language model available? (ANTHROPIC_API_KEY set before starting the server)"""
+    from ..synapse import llm
+    from ..core import config as cfg
+    s = cfg.agents()["synapse"]
+    lv = RUN["live"]
+    return {"available": llm.available(), "provider": llm.provider(), "languages": s["languages"],
+            "models": {r: llm.model_for(r) for r in ("explainer", "copilot", "alert")} if llm.available() else {},
+            "alerts": getattr(getattr(lv, "alert_writer", None), "stats", None)}
+
+
+@app.get("/api/copilot")
+def copilot(lang: str = "en"):
+    return live().copilot.summary(lang)
+
+
+@app.post("/api/copilot/report")
+def copilot_report(lang: str = "en"):
+    return live().copilot.report(lang)
+
+
+@app.post("/api/copilot/decision")
+def copilot_decision(body: Decision):
+    lv = live()
+    entry = lv.copilot.decide(body.suggestion_id, body.title, body.decision, lv.state().get("t", 0))
+    return {"recorded": True, "log_id": entry, "applied": False}
 
 
 @app.get("/api/results")

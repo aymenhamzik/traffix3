@@ -3,7 +3,7 @@ Proves the architecture rules hold in the code:
   1. Only traffix/simulation/executor.py changes a traffic light,
      and only orchestration/ (the masters) calls the executor's request().
   2. Agents never import the simulation backend, the executor or the world.
-  3. The explainer (Synapse) has no path to the simulation at all.
+  3. The Synapse layer (explainer, alert writer, operator copilot) has no path to the simulation.
   4. The calendar assumptions are hidden from agents: no agent imports the calendar model.
 
   python scripts/check_architecture.py
@@ -43,7 +43,8 @@ for path in sorted((ROOT / "traffix").rglob("*.py")):
         fails.append(f"{rel} calls the executor; only masters may")
     if rel.startswith("traffix/agents/") and names(tree) & AGENT_FORBIDDEN:
         fails.append(f"{rel} imports {sorted(names(tree) & AGENT_FORBIDDEN)}")
-    if rel == "traffix/agents/network/explainer.py" and names(tree) & EXPLAINER_FORBIDDEN:
+    if (rel == "traffix/agents/network/explainer.py" or rel.startswith("traffix/synapse/")) \
+            and names(tree) & EXPLAINER_FORBIDDEN:
         fails.append(f"{rel} imports {sorted(names(tree) & EXPLAINER_FORBIDDEN)}")
 
 if fails:
@@ -55,4 +56,4 @@ print("Architecture check passed:")
 print("  - only the executor writes lights, and only masters call it")
 print("  - agents have no access to the simulation backend, executor or world")
 print("  - agents never see the calendar assumptions")
-print("  - the explainer has no path to the simulation")
+print("  - the Synapse layer (explainer, alert writer, copilot) has no path to the simulation")

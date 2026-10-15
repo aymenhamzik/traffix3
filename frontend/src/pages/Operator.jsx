@@ -1,4 +1,5 @@
 import NetworkMap from "../components/NetworkMap.jsx";
+import Copilot from "../components/Copilot.jsx";
 import { Notifications, Stat, Waiting } from "../components/Feed.jsx";
 
 const MODE = { max_pressure: ["ok", "max-pressure"], actuated: ["warn", "actuated (fallback)"], fixed: ["bad", "fixed (stale data)"] };
@@ -16,6 +17,7 @@ export default function Operator({ live }) {
         <Stat label="rain intensity" value={live.weather?.rain ? `${Math.round(live.weather.rain * 100)}%` : "dry"} />
         <Stat label="forecast, next 30 min" value={f.level ? `${Math.round(f.level * 100)}% · ${f.inbound_share > 0.55 ? "inbound" : f.inbound_share < 0.45 ? "outbound" : "balanced"}` : "—"} />
       </div>
+      {(live.status === "running" || live.status === "finished") && <Copilot live={live} />}
       <div className="split">
         <div className="card">
           <NetworkMap live={live} highlight={{ incidents: live.incidents?.map((i) => i.subject), floods: live.floods?.map((x) => x.subject) }} />
