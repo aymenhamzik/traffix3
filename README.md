@@ -180,13 +180,3 @@ plans, **0** for every TraffiX variant. Pedestrian waits are lower than actuated
   clearance cost more than they gain. A clear target for tuning `config/agents.yaml > weather`.
 - **Rain with a flooded street congests every controller**; TraffiX is worse than actuated for cars there.
 
-## 8. Limitations
-- Schematic network (exact streets: `python scripts/import_osm.py` on your machine).
-- Calendar factors are assumptions set by the team, as requested.
-- Notification relevance labels are our own rules.
-- The forecasting agent reads national holiday *dates* (public facts) from `calendar.yaml`, never the factors.
-
-## 9. Suggested team split
-Masters + safety rules · junction agents · network agents (incident, rerouting, weather) ·
-network agents (forecast, corridor, transit) · training + experiments · frontend.
-Bus driver persona name "Hédi" is a placeholder.
